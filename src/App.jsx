@@ -344,7 +344,9 @@ export default function App() {
     const a = document.createElement('a');
     a.href = url;
     a.download = `${tender.tender_id}_status.csv`;
+    document.body.appendChild(a);
     a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }, [tender, requirements, matches, uploadedFiles]);
 
