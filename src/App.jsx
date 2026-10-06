@@ -349,8 +349,8 @@ export default function App() {
               <Package size={20} className="text-white" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-base font-bold text-slate-900 leading-tight">Tender Package Builder</h1>
-              <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-500">AI DevFest 2026</span>
+              <h1 className="text-base font-bold text-slate-900 leading-tight">{t.appName}</h1>
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-500">{t.devfest}</span>
             </div>
           </div>
           
@@ -389,20 +389,20 @@ export default function App() {
         {!tender && (
           <div className="max-w-3xl mx-auto mt-16 text-center">
             <span className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-widest text-blue-700 bg-blue-50 rounded-full border border-blue-100 uppercase">
-              Tender Package Workspace
+              {t.workspace}
             </span>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
               Tender Document Package Builder
             </h2>
             <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Prepare compliant tender submissions faster, with automatic document validation, expiry checks and PDF packaging.
+              {t.appTagline}
             </p>
 
             <div className="flex flex-wrap justify-center gap-6 mb-12 text-sm font-medium text-slate-700">
-              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-emerald-500" /> Validate requirements</div>
-              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-emerald-500" /> Detect duplicates</div>
-              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-emerald-500" /> Check expiry dates</div>
-              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-emerald-500" /> Generate final package</div>
+              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-emerald-500" /> {t.featValidate}</div>
+              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-emerald-500" /> {t.featDuplicates}</div>
+              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-emerald-500" /> {t.featExpiry}</div>
+              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-emerald-500" /> {t.featPackage}</div>
             </div>
 
             <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200 overflow-hidden">
@@ -419,17 +419,17 @@ export default function App() {
                 <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
                   <FileText size={40} className="text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Drop requirements.json here</h3>
-                <p className="text-slate-500 mb-8">or browse from your computer</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{t.dropOrClick}</h3>
+                <p className="text-slate-500 mb-8">{t.orBrowse}</p>
                 
                 <span className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-xl font-semibold shadow-md shadow-blue-200 transition-all">
-                  Load Tender Requirements
+                  {t.loadRequirements}
                   <ArrowRight size={18} />
                 </span>
               </label>
               <div className="bg-slate-50 border-t border-slate-100 p-4 flex items-center justify-center gap-2 text-xs font-medium text-slate-500">
                 <ShieldCheck size={14} className="text-emerald-500" />
-                Your documents are processed locally in your browser.
+                {t.privacyNotice}
               </div>
             </div>
           </div>
@@ -451,19 +451,19 @@ export default function App() {
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mt-6">
                     <div>
-                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Tender ID</p>
+                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">{t.tenderId}</p>
                       <p className="font-mono font-medium text-slate-900 bg-slate-100 px-2 py-1 rounded inline-block">{tender.tender_id}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Submission Deadline</p>
+                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">{t.submissionDeadline}</p>
                       <p className="font-semibold text-red-600">{tender.submission_deadline}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Procuring Entity</p>
+                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">{t.procuringEntity}</p>
                       <p className="font-medium text-slate-800">{tender.procuring_entity}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Bidder</p>
+                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">{t.bidder}</p>
                       <p className="font-medium text-slate-800">{tender.bidder}</p>
                     </div>
                   </div>
@@ -477,13 +477,11 @@ export default function App() {
                 <div className="flex flex-col md:flex-row gap-8 items-center justify-between">
                   <div className="flex-1 w-full">
                     <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
-                      <ShieldCheck className={isBlocking ? "text-amber-400" : "text-emerald-400"} />
-                      Document Readiness
-                    </h3>
+                      <ShieldCheck className={isBlocking ? "text-amber-400" : "text-emerald-400"} /> {t.docReadiness} </h3>
                     <p className="text-slate-400 text-sm mb-6">
                       {isBlocking 
                         ? <span className="text-amber-300 font-medium">{summary.blocking} issues require attention</span>
-                        : <span className="text-emerald-300 font-medium">All mandatory documents are ready for packaging.</span>
+                        : <span className="text-emerald-300 font-medium">{t.allReady}</span>
                       }
                     </p>
                     
@@ -496,7 +494,7 @@ export default function App() {
                             <div className="bg-emerald-500 h-full transition-all duration-500" style={{ width: `${readyPercentage}%` }}></div>
                           </div>
                           <div className="mt-2 text-xs font-semibold text-slate-400 flex justify-between">
-                            <span>{readyCount} of {requirements.length} requirements ready</span>
+                            <span>{readyCount} of {requirements.length} {t.reqsReady}</span>
                             <span>{readyPercentage.toFixed(0)}%</span>
                           </div>
                         </>
@@ -511,19 +509,19 @@ export default function App() {
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full md:w-auto shrink-0">
                     <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 text-center">
                       <div className="text-2xl font-bold text-emerald-400 mb-1">{summary.ok}</div>
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">OK</div>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{t.statusOk}</div>
                     </div>
                     <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 text-center">
                       <div className="text-2xl font-bold text-red-400 mb-1">{summary.missing + summary.expired}</div>
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Missing</div>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{t.statusMissing}</div>
                     </div>
                     <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 text-center">
                       <div className="text-2xl font-bold text-amber-400 mb-1">{summary.expiryNeeded}</div>
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Expiry</div>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{t.statusExpiryNeeded}</div>
                     </div>
                     <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 text-center">
                       <div className="text-2xl font-bold text-slate-400 mb-1">{summary.notProvided}</div>
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Optional</div>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{t.statusNotProvided}</div>
                     </div>
                   </div>
                 </div>
@@ -537,9 +535,8 @@ export default function App() {
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
                   <div className="p-5 border-b border-slate-100 bg-slate-50/50">
                     <h3 className="font-bold text-slate-900 flex items-center gap-2">
-                      <Upload size={18} className="text-blue-600" /> Upload Documents
-                    </h3>
-                    <p className="text-xs text-slate-500 mt-1">Up to 30 files • 50 MB total</p>
+                      <Upload size={18} className="text-blue-600" /> {t.uploadDocuments}</h3>
+                    <p className="text-xs text-slate-500 mt-1">{t.uploadDesc}</p>
                   </div>
                   
                   <div className={uploadedFiles.length > 0 ? "p-3" : "p-5"}>
@@ -563,8 +560,8 @@ export default function App() {
                       <div className={`flex items-center justify-center ${uploadedFiles.length > 0 ? 'gap-3 flex-row' : 'flex-col gap-3'}`}>
                         <Upload size={uploadedFiles.length > 0 ? 20 : 24} className="text-slate-400" />
                         <div>
-                          <p className="text-sm font-semibold text-slate-700">Drop PDF files here {uploadedFiles.length > 0 ? 'to add more' : ''}</p>
-                          {uploadedFiles.length === 0 && <p className="text-xs text-slate-500 mt-1">or click to browse</p>}
+                          <p className="text-sm font-semibold text-slate-700">{t.dropPDFs} {uploadedFiles.length > 0 ? t.toAddMore : ''}</p>
+                          {uploadedFiles.length === 0 && <p className="text-xs text-slate-500 mt-1">{t.orBrowse}</p>}
                         </div>
                       </div>
                     </label>
@@ -589,14 +586,13 @@ export default function App() {
                                   
                                   <div className="flex flex-wrap gap-2 mt-2">
                                     {isMatched ? (
-                                      <span className="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">MATCHED</span>
+                                      <span className="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">{t.matched}</span>
                                     ) : (
-                                      <span className="text-[10px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded border border-slate-200">UNMATCHED</span>
+                                      <span className="text-[10px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded border border-slate-200">{t.unmatched}</span>
                                     )}
                                     {isDup && (
                                       <span className="text-[10px] font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded border border-amber-200 flex items-center gap-1">
-                                        <AlertTriangle size={10} /> DUPLICATE
-                                      </span>
+                                        <AlertTriangle size={10} /> {t.duplicate}</span>
                                     )}
                                   </div>
                                 </div>
@@ -620,10 +616,8 @@ export default function App() {
                   <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3 shadow-sm">
                     <AlertTriangle size={20} className="text-amber-600 flex-shrink-0" />
                     <div>
-                      <h4 className="text-sm font-bold text-amber-900 mb-1">Duplicate documents detected</h4>
-                      <p className="text-xs text-amber-700 leading-relaxed">
-                        Files with identical content have been detected. The system will prevent matching the same duplicate content to multiple requirements.
-                      </p>
+                      <h4 className="text-sm font-bold text-amber-900 mb-1">{t.duplicateWarningTitle}</h4>
+                      <p className="text-xs text-amber-700 leading-relaxed">{t.duplicateWarningDesc}</p>
                     </div>
                   </div>
                 )}
@@ -633,15 +627,13 @@ export default function App() {
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-slate-900 flex items-center gap-2 text-lg">
-                    <Link size={20} className="text-blue-600" /> Match Documents
-                  </h3>
+                    <Link size={20} className="text-blue-600" /> {t.matchDocuments}</h3>
                   <div className="flex gap-2">
                     <button
                       onClick={handleAutoMatch}
                       className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg hover:bg-blue-100 transition-colors border border-blue-200"
                     >
-                      <Sparkles size={14} /> Auto-Match
-                    </button>
+                      <Sparkles size={14} /> {t.autoMatch}</button>
                   </div>
                 </div>
 
@@ -668,9 +660,7 @@ export default function App() {
                               {req.mandatory ? t.mandatory : t.optional}
                             </span>
                             {req.has_expiry && (
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200">
-                                Expiry Req
-                              </span>
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200">{t.expiryRequired}</span>
                             )}
                           </div>
                         </div>
@@ -688,7 +678,7 @@ export default function App() {
                               onChange={(e) => handleMatch(req.id, e.target.value)}
                               className="w-full text-sm border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-medium"
                             >
-                              <option value="" disabled>Select document...</option>
+                              <option value="" disabled>{t.selectFile2}</option>
                               {getAvailableFiles(req.id).map(f => (
                                 <option key={f.id} value={f.id}>{f.name} ({f.pages} pg)</option>
                               ))}
@@ -713,7 +703,7 @@ export default function App() {
 
                             {req.has_expiry && (
                               <div className="flex items-center gap-2 bg-white p-2 rounded border border-slate-200">
-                                <span className="text-xs font-semibold text-slate-600 whitespace-nowrap">Expiry:</span>
+                                <span className="text-xs font-semibold text-slate-600 whitespace-nowrap">{t.expiryDate}:</span>
                                 <input
                                   type="date"
                                   value={match.expiryDate || ''}
@@ -737,7 +727,7 @@ export default function App() {
             <div className="mt-12 bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
               <div className="bg-slate-900 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Package Readiness</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">{t.packageReadiness}</h3>
                   {isBlocking ? (
                     <p className="text-amber-300 font-medium text-sm flex items-center justify-center md:justify-start gap-2">
                       <AlertTriangle size={16} /> Resolve all blocking issues before generating.
@@ -754,8 +744,7 @@ export default function App() {
                     onClick={handleExportCSV}
                     className="flex-1 md:flex-none justify-center flex items-center gap-2 px-4 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold transition-colors border border-slate-700"
                   >
-                    <FileSpreadsheet size={18} /> Export CSV
-                  </button>
+                    <FileSpreadsheet size={18} /> {t.exportCSV}</button>
                   <button
                     onClick={handleGenerate}
                     disabled={isBlocking || generating}
@@ -767,9 +756,9 @@ export default function App() {
                     `}
                   >
                     {generating ? (
-                      <><Loader2 size={18} className="animate-spin" /> Generating...</>
+                      <><Loader2 size={18} className="animate-spin" /> {t.generating}</>
                     ) : (
-                      <><Package size={18} /> Generate Package</>
+                      <><Package size={18} /> {t.generatePackage}</>
                     )}
                   </button>
                 </div>
@@ -780,7 +769,7 @@ export default function App() {
                   <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
                     <CheckCircle2 size={32} className="text-emerald-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Package Generated!</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{t.packageReady}</h3>
                   <p className="text-slate-600 mb-6 font-mono text-sm bg-white px-3 py-1 rounded border border-slate-200">
                     {generatedFilename}
                   </p>
@@ -788,8 +777,7 @@ export default function App() {
                     onClick={handleDownload}
                     className="flex items-center gap-2 px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-md shadow-emerald-200"
                   >
-                    <Download size={20} /> Download PDF Package
-                  </button>
+                    <Download size={20} /> {t.downloadPackage}</button>
                 </div>
               )}
             </div>
