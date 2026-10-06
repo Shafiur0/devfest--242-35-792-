@@ -487,11 +487,21 @@ export default function App() {
                       }
                     </p>
                     
-                    <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden flex">
-                      <div className="bg-emerald-500 h-full transition-all" style={{ width: `${(summary.ok / requirements.length) * 100}%` }}></div>
-                      <div className="bg-red-500 h-full transition-all" style={{ width: `${((summary.missing + summary.expired) / requirements.length) * 100}%` }}></div>
-                      <div className="bg-amber-500 h-full transition-all" style={{ width: `${(summary.expiryNeeded / requirements.length) * 100}%` }}></div>
-                    </div>
+                    {(() => {
+                      const readyCount = requirements.length - summary.blocking;
+                      const readyPercentage = requirements.length > 0 ? (readyCount / requirements.length * 100) : 0;
+                      return (
+                        <>
+                          <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden flex">
+                            <div className="bg-emerald-500 h-full transition-all duration-500" style={{ width: `${readyPercentage}%` }}></div>
+                          </div>
+                          <div className="mt-2 text-xs font-semibold text-slate-400 flex justify-between">
+                            <span>{readyCount} of {requirements.length} requirements ready</span>
+                            <span>{readyPercentage.toFixed(0)}%</span>
+                          </div>
+                        </>
+                      );
+                    })()}
                     <div className="mt-2 text-xs font-semibold text-slate-400 flex justify-between">
                       <span>{summary.ok} of {requirements.length} ready</span>
                       <span>{(summary.ok / requirements.length * 100).toFixed(0)}%</span>
@@ -532,10 +542,11 @@ export default function App() {
                     <p className="text-xs text-slate-500 mt-1">Up to 30 files • 50 MB total</p>
                   </div>
                   
-                  <div className="p-5">
+                  <div className={uploadedFiles.length > 0 ? "p-3" : "p-5"}>
                     <label 
-                      className={`block w-full border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all
+                      className={`block w-full border-2 border-dashed rounded-xl text-center cursor-pointer transition-all
                         ${dragOver ? 'border-blue-500 bg-blue-50' : 'border-slate-300 hover:border-blue-400 hover:bg-slate-50'}
+                        ${uploadedFiles.length > 0 ? 'p-4' : 'p-8'}
                       `}
                       onDragOver={handleDragOver}
                       onDragLeave={handleDragLeave}
@@ -549,9 +560,13 @@ export default function App() {
                         onChange={handleFileUpload}
                         className="hidden"
                       />
-                      <Upload size={24} className="mx-auto text-slate-400 mb-3" />
-                      <p className="text-sm font-semibold text-slate-700">Drop PDF files here</p>
-                      <p className="text-xs text-slate-500 mt-1">or click to browse</p>
+                      <div className={`flex items-center justify-center ${uploadedFiles.length > 0 ? 'gap-3 flex-row' : 'flex-col gap-3'}`}>
+                        <Upload size={uploadedFiles.length > 0 ? 20 : 24} className="text-slate-400" />
+                        <div>
+                          <p className="text-sm font-semibold text-slate-700">Drop PDF files here {uploadedFiles.length > 0 ? 'to add more' : ''}</p>
+                          {uploadedFiles.length === 0 && <p className="text-xs text-slate-500 mt-1">or click to browse</p>}
+                        </div>
+                      </div>
                     </label>
                   </div>
 
@@ -638,7 +653,7 @@ export default function App() {
                   return (
                     <div key={req.id} className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden flex flex-col sm:flex-row transition-all hover:border-slate-300">
                       {/* Left: Requirement Details */}
-                      <div className="p-4 sm:p-5 sm:w-5/12 bg-slate-50/50 border-b sm:border-b-0 sm:border-r border-slate-100 flex flex-col justify-between">
+                      <div className="p-3 sm:p-4 sm:w-5/12 bg-slate-50/50 border-b sm:border-b-0 sm:border-r border-slate-100 flex flex-col justify-between">
                         <div>
                           <div className="flex gap-2 mb-2">
                             <span className="w-6 h-6 rounded bg-slate-200 text-slate-600 text-xs font-bold flex items-center justify-center flex-shrink-0">
@@ -659,13 +674,13 @@ export default function App() {
                             )}
                           </div>
                         </div>
-                        <div className="mt-4 ml-8">
+                        <div className="mt-2 ml-8">
                           <StatusBadge status={status} t={t} />
                         </div>
                       </div>
 
                       {/* Right: Action / Matching */}
-                      <div className="p-4 sm:p-5 sm:w-7/12 flex flex-col justify-center gap-3">
+                      <div className="p-3 sm:p-4 sm:w-7/12 flex flex-col justify-center gap-3">
                         {!matchedFile ? (
                           <div className="w-full">
                             <select
