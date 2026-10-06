@@ -101,6 +101,8 @@ export const en = {
   corruptPDF: 'Unable to read this PDF. It may be damaged or password-protected.',
   duplicateWarning: 'This file is a duplicate of another uploaded file.',
   duplicateMatchBlocked: 'Duplicate files cannot be matched to different requirements.',
+  duplicateWarningTitle: 'Duplicate documents detected',
+  duplicateWarningDesc: 'Files with identical content have been detected. The system will prevent matching the same duplicate content to multiple requirements.',
 
   // Cover page
   coverTitle: 'TENDER DOCUMENT PACKAGE',
@@ -208,6 +210,8 @@ export const bn = {
   corruptPDF: 'এই PDF ফাইলটি পড়া যাচ্ছে না। ফাইলটি ক্ষতিগ্রস্ত অথবা পাসওয়ার্ড-সুরক্ষিত হতে পারে।',
   duplicateWarning: 'এই ফাইলটি অন্য একটি আপলোড করা ফাইলের প্রতিলিপি।',
   duplicateMatchBlocked: 'প্রতিলিপি ফাইলগুলি বিভিন্ন প্রয়োজনীয়তায় মিলানো যাবে না।',
+  duplicateWarningTitle: 'প্রতিলিপি নথি শনাক্ত করা হয়েছে',
+  duplicateWarningDesc: 'একই বিষয়বস্তু সহ ফাইল শনাক্ত করা হয়েছে। সিস্টেম একই প্রতিলিপি বিষয়বস্তুকে একাধিক প্রয়োজনীয়তার সাথে মেলাতে বাধা দেবে।',
 
   coverTitle: 'TENDER DOCUMENT PACKAGE',
   coverTenderId: 'Tender ID',

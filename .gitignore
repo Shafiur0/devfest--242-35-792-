@@ -20,3 +20,8 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+test-results/
+App_backup.jsx
+App_export.txt
+problem-pack/
