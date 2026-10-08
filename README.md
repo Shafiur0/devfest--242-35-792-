@@ -1,8 +1,9 @@
 # Tender Document Package Builder
 
-🏆 **39th Position - AI Dev Fest 2026 Vibe Coding Contest (Score: 84.0)**
-
-![AI Dev Fest 2026 Score](screenshots/score.png)
+> 🏆 **39th Position - AI Dev Fest 2026 Vibe Coding Contest**
+> 
+> **Project:** Tender Document Package Builder (VC009)  
+> **Total Score:** 84.0 / 100
 
 A browser-based application to validate and package compliant tender submissions securely and accurately.
 
