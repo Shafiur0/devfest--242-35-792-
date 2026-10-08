@@ -2,6 +2,8 @@
 
 ![AI Dev Fest 2026 Score](screenshots/score.svg)
 
+🏆 **Achieved 39th Position (among 193 participants) at the AI Dev Fest 2026 Vibe Coding Contest with a score of 84.0!**
+
 A browser-based application to validate and package compliant tender submissions securely and accurately.
 
 Author: Shafiur Rahman Shafim
