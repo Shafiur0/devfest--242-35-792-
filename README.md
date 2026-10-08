@@ -8,7 +8,7 @@ A browser-based application to validate and package compliant tender submissions
 
 Author: Shafiur Rahman Shafim
 Registration Number: [REGISTRATION NUMBER PLACEHOLDER]
-Live Demo: [LIVE DEMO URL PLACEHOLDER]
+Live Demo: https://devfest-242-35-792.vercel.app/
 Repository: https://github.com/Shafiur0/devfest--242-35-792-
 
 ## 1. OVERVIEW
